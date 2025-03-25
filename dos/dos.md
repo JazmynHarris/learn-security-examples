@@ -31,5 +31,13 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+- There is no rate limiter to stop a lot of requests.
+- If the id format entered is invalid, the site crashes
+
 2. Briefly explain how a malicious attacker can exploit them.
+- Without a rate limiter, a malicious attacker can send an unlimited amount of requests to the server which can slow down the server or crash it
+- A malicious attacker can enter many invalid id formats that will cause extensive CPU usage and increased memory.
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+- This file adds a rate limiter that prevents users from sending to many requests at once. 
+- If the id format entered is not valid, the try/catch block will catch this error and return an error status.
