@@ -25,5 +25,14 @@ The example demonstrates a privilege escalation vulnerability and how to exploit
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+- Using the user input directly and not sanitizing
+- Could find an admin
+- No authorization validation to ensure the right person is escalating
+
 2. Briefly explain how a malicious attacker can exploit them.
+- Attacker that isn't logged in can change the role of any user without authentication
+- Attacker can access any user name through input manipulation ex. { "$ne" :  null}
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the privilege escalation vulnerability?
+- Extends session data to include userId and checks log-in info
+- Finds user based on log-in info and not user input
